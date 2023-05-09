@@ -1,0 +1,35 @@
+import espnow
+import time
+
+def send_forever(receiver_mac_address):
+    '''
+    Sends messages to peer in infinite loop.
+    '''
+    e = espnow.ESPNow()
+    e.active(True)
+
+    peer = receiver_mac_address # MAC address of peer's wifi interface
+    e.add_peer(peer)      # Must add_peer() before send()
+
+    while True:
+        print("Starting loop...")
+        e.send(peer, "Starting...")
+        for i in range(100):
+            msg = "Hello from the other ESP32 {}".format(i)
+            e.send(peer, msg, True)
+            time.sleep(0.5)
+
+def receive_forever():
+    '''
+    Listens for incomming messages in infinite loop.
+    '''
+    e = espnow.ESPNow()
+    e.active(True)
+
+    print("Listening")
+    while True:
+        host, msg = e.recv() # Blocking call for default timeout (300,000 ms)
+        if msg:
+            print(host, msg)
+            if msg == b'end':
+                break
