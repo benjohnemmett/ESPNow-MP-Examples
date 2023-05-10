@@ -1,5 +1,6 @@
 import espnow
 import time
+import util
 
 def send_and_listen_forever(echoer_mac_address):
     '''
@@ -9,18 +10,25 @@ def send_and_listen_forever(echoer_mac_address):
     e.active(True)
     e.add_peer(echoer_mac_address)
 
+    timeout_ms = 1000
+
     while True:
         print("Starting send & listen loop...")
         for i in range(100):
-            msg = "Echo this: {}".format(i)
+            msg = f"Echo this: {i}"
             e.send(echoer_mac_address, msg, True)
             time.sleep(0.5)
-            host, bytes_back = e.recv()
-            str_back = bytes_back.decode('utf-8')
-            if (msg != str_back):
-                print("Failed to get echo. {} != {}".format(msg, bytes_back))
+            host, bytes_back = e.recv(timeout_ms)
+            if host is None:
+                print("Timed out waiting for echo")
             else:
-                print("Successfully received echo of '{}'".format(str_back))
+                str_back = bytes_back.decode('utf-8')
+                if (msg != str_back):
+                    print(f"Message received did not match sent. {msg} != {bytes_back}")
+                else:
+                    print(f"Successfully received echo of '{str_back}'")
+                    
+            util.print_stats(e)
 
 def echo_forever(sender_mac_address):
     '''
@@ -37,7 +45,7 @@ def echo_forever(sender_mac_address):
         host, msg = e.recv()
         if msg:
             print(host, msg)
-            if msg == b'end':
-                break
             e.send(sender_mac_address, msg, True) # send the same message back again
+            util.print_stats(e)
+
 

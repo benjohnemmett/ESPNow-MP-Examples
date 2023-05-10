@@ -1,5 +1,6 @@
 import espnow
 import time
+import util
 
 def send_forever(receiver_mac_address):
     '''
@@ -15,8 +16,9 @@ def send_forever(receiver_mac_address):
         print("Starting loop...")
         e.send(peer, "Starting...")
         for i in range(100):
-            msg = "Hello from the other ESP32 {}".format(i)
+            msg = f"Hello from the other ESP32 {i}"
             e.send(peer, msg, True)
+            util.print_stats(e)
             time.sleep(0.5)
 
 def receive_forever():
@@ -31,5 +33,4 @@ def receive_forever():
         host, msg = e.recv() # Blocking call for default timeout (300,000 ms)
         if msg:
             print(host, msg)
-            if msg == b'end':
-                break
+            util.print_stats(e)
