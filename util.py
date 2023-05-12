@@ -23,3 +23,9 @@ def print_stats(esp_device):
     print(f"  tx_failures {stats[2]}")
     print(f"  rx_packets {stats[3]}")
     print(f"  rx_dropped_packets {stats[4]}")
+
+def print_rssi(esp_device):
+    peers_table = esp_device.peers_table
+    print("RSSI Table:")
+    for peer in peers_table:
+        print(f"  {peer} : {peers_table[peer][0]}")

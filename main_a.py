@@ -3,6 +3,7 @@ import example_unidirectional as unidirectional
 import example_echo as echo
 
 util.activate_wlan()
+print("Device A")
 print(util.get_mac())
 
 # print("Receiving forever...")

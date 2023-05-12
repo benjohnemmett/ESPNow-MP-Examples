@@ -3,6 +3,7 @@ import example_echo as echo
 import util
 
 util.activate_wlan()
+print("Device B")
 print(util.get_mac())
 
 # print("Sending forever to {}".format(util.mac_address_a))

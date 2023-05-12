@@ -19,6 +19,7 @@ def send_forever(receiver_mac_address):
             msg = f"Hello from the other ESP32 {i}"
             e.send(peer, msg, True)
             util.print_stats(e)
+            util.print_rssi(e)
             time.sleep(0.5)
 
 def receive_forever():

@@ -29,6 +29,7 @@ def send_and_listen_forever(echoer_mac_address):
                     print(f"Successfully received echo of '{str_back}'")
                     
             util.print_stats(e)
+            util.print_rssi(e)
 
 def echo_forever(sender_mac_address):
     '''
@@ -47,5 +48,4 @@ def echo_forever(sender_mac_address):
             print(host, msg)
             e.send(sender_mac_address, msg, True) # send the same message back again
             util.print_stats(e)
-
-
+            util.print_rssi(e)
