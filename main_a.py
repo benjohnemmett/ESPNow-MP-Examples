@@ -2,6 +2,8 @@ import util
 import example_unidirectional as unidirectional
 import example_echo as echo
 import example_broadcast_async as bcast
+import example_hall_effect_blinker as hall_blinker
+
 
 util.activate_wlan()
 print("Device A")
@@ -16,5 +18,9 @@ print(util.get_mac())
 # echo.send_and_listen_forever(util.mac_address_b)
 
 ## Broadcast + Async Listen Example
-print(f"Broadcasting to everyone")
-bcast.broadcast_forever()
+# print(f"Broadcasting to everyone")
+# bcast.broadcast_forever()
+
+## Hall Effect Blink
+print("Listening for hall effect data and blinking...")
+hall_blinker.receive_value_and_blink_loop()
