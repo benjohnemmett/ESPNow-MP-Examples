@@ -1,13 +1,21 @@
+import util
 import example_unidirectional as unidirectional
 import example_echo as echo
-import util
+import example_broadcast_async as bcast
+
 
 util.activate_wlan()
 print("Device B")
 print(util.get_mac())
 
-# print("Sending forever to {}".format(util.mac_address_a))
-# unidirectional.send_forever(util.mac_address_a)
+## Unidirectional Receiver Example
+# print("Receiving forever...")
+# unidirectional.receive_forever()
 
-print("Ready to echo back messages to {}".format(util.mac_address_a))
-echo.echo_forever(util.mac_address_a)
+## Echo Example
+# print(f"Ready to echo back messages to {util.mac_address_a}")
+# echo.echo_forever(util.mac_address_a)
+
+## Broadcast + Async Listen Example
+print(f"Broadcasting to everyone")
+bcast.broadcast_forever()
