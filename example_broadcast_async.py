@@ -25,4 +25,8 @@ def broadcast_forever():
         time.sleep(0.5)
 
 def receive_irq(esp_device):
+    '''
+    Callback method when a message is received. This prints the sender
+    and message to stdout.
+    '''
     print(f"Got Message: {esp_device.irecv(0)}")

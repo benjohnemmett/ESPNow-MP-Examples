@@ -4,6 +4,11 @@ import example_echo as echo
 import example_broadcast_async as bcast
 import example_hall_effect_blinker as hall_blinker
 
+'''
+This is the main.py file for device B. Copy to device B and rename main.py
+Uncomment the example that you would like to run, as well as the matching
+example on device A.
+'''
 
 util.activate_wlan()
 print("Device B")

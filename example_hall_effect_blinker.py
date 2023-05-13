@@ -58,17 +58,17 @@ def receive_irq(espnow_device):
         value = int(msg.decode())
         print(f"Got Hall Effect value: {value}")
         if value < -100:
-            blink_time_seconds = 0.100
+            blink_time_seconds = 0.1
         elif value < -50:
-            blink_time_seconds = 0.200
+            blink_time_seconds = 0.2
         elif value < 0:
-            blink_time_seconds = 0.300
+            blink_time_seconds = 0.3
         elif value < 50:
-            blink_time_seconds = 0.400
+            blink_time_seconds = 0.4
         elif value < 100:
-            blink_time_seconds = 0.500
+            blink_time_seconds = 0.5
         else:
-            blink_time_seconds = 0.600
+            blink_time_seconds = 0.6
     except:
         print("Failed to parse incoming data")
 
