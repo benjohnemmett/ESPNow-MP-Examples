@@ -1,5 +1,5 @@
 # ESPNow-MP-Examples
-Examples of ESP-Now with Micropython on ESP32. These examples use only two ESP32 devices.
+Examples of ESP-Now with Micropython on ESP32. These examples use only two ESP32 devices. See blog post for more details https://notes.benjemmett.com/archives/640.
 
 The current stable release, v1.20.0, does not yet have ESP-Now support. For now, use the most recent nightly build from here https://micropython.org/download/esp32/. I tested this code using esp32-20230504-unstable-v1.20.0-50-g786013d46.bin.
 
